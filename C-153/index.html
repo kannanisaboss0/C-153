@@ -1,0 +1,59 @@
+<!----------------------------------------------------------------Ablaze Under the Water---------------------------------------------------------------->
+
+<!--Defining the document-->
+<!DOCTYPE>
+
+<!--Defining th head tag-->
+<head>
+
+    <!--Sourcing data using script tags:- A-FRAME, and move.js-->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="move.js"></script>
+</head>
+
+<!--Defining the body tag-->
+<body>
+
+    <!--Adding the scene tag-->
+   <a-scene  id="fog_container" fog="density:0.08;type:exponential;color:#AAA">
+       
+        <!--Defining an entity which contains the camera, submarine(player) and text-->
+       <a-entity move-submarine-planar  move-submarine-vertical>
+
+        <!--Adding the text entities-->
+        <a-entity position="-0.6 10 0" text="font:exo2bold;align:center;width:30;color:black;value:ABLAZE UNDER THE WATER V 0.1.0"></a-entity>
+        <a-entity position="-0.6 9 0" text="font:exo2bold;align:center;width:22;color:black;value:(SUBMARINE MOVEMENT)"></a-entity>
+        <a-entity position="-0.6 7 0" text="font:exo2bold;align:center;width:20;color:black;value: WASD Controls"></a-entity>
+        <a-entity position="-0.6 5 0" text="font:exo2bold;align:center;width:20;color:black;value:Descend: Down Arrow"></a-entity> 
+        <a-entity position="-0.6 3 0" text="font:exo2bold;align:center;width:20;color:black;value:Ascend: Up Arrow"></a-entity> 
+
+        <!--Defining the camera tag-->
+        <a-camera   wasd-controls-enabled="false" position="0 2.5 20"></a-camera>
+
+        <!--Integrating the submarine model-->
+        <a-entity  gltf-model="#Submarine"></a-entity>
+       </a-entity>
+
+       <!--Adding directional light using light tags-->
+       <a-entity  light="type:directional;intensity:5;distance:300;color:white" position="120 150 0"></a-entity>
+       <a-entity light="type:directional;intensity:5;distance:300;color:white" position="-120 150 0"></a-entity>
+
+       <!--Downloading the asset models using the assets tag-->
+       <a-assets>
+           <a-asset-item id="Submarine" src="/Submarine/scene.gltf"></a-asset-item>
+           <a-asset-item  id="ShipLight" src="/Battleship_light/scene.gltf"></a-asset-item>
+           <a-asset-item  id="ShipHeavy" src="/Battleship_heavy/scene.gltf"></a-asset-item>
+       </a-assets>
+       
+    <!--Integrating the light and heavy ships-->
+    <a-entity rotation="0 45 45"  scale="0.5 0.5 0.5" position="50 0 0" gltf-model="#ShipLight"></a-entity>
+    <a-entity rotation="56 49 -5" scale="0.25 0.25 0.25" position="-36 -5 0" gltf-model="#ShipHeavy"></a-entity>
+    
+    <!--Rendering the sea-->
+    <a-box   color="blue" position="0 0.4 0" depth="0.02" width="2000" height="2000" rotation="-90 0 0" ></a-box>
+
+    </a-entity>
+   </a-scene>   
+</body>
+
+<!----------------------------------------------------------------Ablaze Under the Water---------------------------------------------------------------->
